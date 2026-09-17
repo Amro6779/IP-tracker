@@ -1,42 +1,54 @@
-* , *::after , *::before {
-    margin : 0;
-    box-sizing: border-box;
+*,
+*::after,
+*::before {
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-image: url(../images/pattern-bg-desktop.png);
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-image: url(../images/pattern-bg-desktop.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-:root{
-    --gray950 : rgb(43, 43, 43);
-    --gray400 : rgb(148, 148, 148);
+:root {
+  --gray950: rgb(43, 43, 43);
+  --gray400: rgb(148, 148, 148);
 }
 
-.tracker{
-    position: relative;
-    left: 120px;
+.tracker { 
+  position: relative;
+  left: 120px;
 }
 
-.IP-locker{
-    position: relative;
-    left: 490px;
+.IP-locker {
+  position: relative;
+  left: 490px;
 }
 
-.IP-locker .search-button{
-    background-color: var(--gray950);
-    position: absolute;
-    right: 0.5px;
-    top: 0.5px;
+#IP-tracker:focus{
+    border: 0 !important;
+    outline: 0;
 }
 
-.search-button:hover{
-    background-color: var(--gray400);
+.IP-locker .search-button {
+  background-color: var(--gray950);
+  position: absolute;
+  right: 0.5px;
+  top: 0.5px;
 }
 
-.IP-data{
-    position: absolute;
-    left: 140px;
+.search-button:hover {
+  background-color: var(--gray400);
 }
 
+.IP-data {
+  position: absolute;
+  left: 140px;
+  z-index: 1000;
+}
+
+#map {
+  height: 600px;
+  width: 100%;
+}
