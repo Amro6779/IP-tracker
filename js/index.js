@@ -1,3 +1,16 @@
+
+//////////////////* Leaflet Code for mapping API ///////////////////////
+
+let map = L.map("map").setView([30.0444, 31.2357], 13);
+let customIcon = L.icon({
+  iconUrl: "../images/icon-location.svg",
+  iconSize: [40, 50],
+});
+
+
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
+let marker = L.marker([30.0444, 31.2357], { icon: customIcon }).addTo(map);
+
 ////////////////////! inputs ///////////////////////////
 
 const ipTracker = document.getElementById("IP-tracker");
@@ -17,11 +30,11 @@ async function getData(ip) {
     );
     let data = await ipInfo.json();
     displayInfo(data);
+
     const lat = data.location.lat;
     const lng = data.location.lng
 
     updateMap(lat , lng);
-    console.log(data);
   } catch (error) {
     console.log(error);
   }
@@ -65,15 +78,3 @@ function updateMap(lat , lng){
    map.setView([lat , lng] , 13);
    marker.setLatLng([lat , lng]);
 }
-
-//////////////////* Leaflet Code for mapping API ///////////////////////
-
-let map = L.map("map").setView([30.0444, 31.2357], 13);
-let customIcon = L.icon({
-  iconUrl: "../images/icon-location.svg",
-  iconSize: [40, 50],
-});
-
-
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
-let marker = L.marker([30.0444, 31.2357], { icon: customIcon }).addTo(map);
