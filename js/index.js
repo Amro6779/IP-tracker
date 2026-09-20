@@ -25,21 +25,18 @@ searchButton.addEventListener("click", () => {
 
 async function getData(ip) {
   try {
-    let ipInfo = await fetch(
-      `https://geo.ipify.org/api/v2/country,city?apiKey=${API_KEY}&ipAddress=${ip}`,
-    );
+    let apiUrl = !ip ? `/api/get-ip-data` : `/api/get-ip-data?ip=${ip}`;
+    let ipInfo = await fetch(apiUrl);
     let data = await ipInfo.json();
     displayInfo(data);
 
     const lat = data.location.lat;
-    const lng = data.location.lng
-
-    updateMap(lat , lng);
+    const lng = data.location.lng;
+    updateMap(lat, lng);
   } catch (error) {
     console.log(error);
   }
 }
-
 getData(ipTracker.value);
 
 
