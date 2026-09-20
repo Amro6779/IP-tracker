@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,17 +9,19 @@
     <link rel="stylesheet" href="./css/leaflet.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
-    
+
 
     <div class="tracker text-center container m-0 p-0">
         <p class="text-light fw-bolder fs-4 mt-5">IP Address Tracker</p>
-        <div class="IP-locker w-25">
-            <input type="search" name="IP-search" id="IP-tracker" class="rounded border-0 p-2 w-100">
-            <div id="search-button" class="search-button btn rounded-start-0 mb-1 ms-0">
-                <img src="./images/icon-arrow.svg" alt="arrow">
-            </div>
-        </div> 
+        <form id="ip-form" class="IP-locker w-25">
+            <input type="search" name="ip" id="IP-tracker" class="rounded border-0 p-2 w-100"
+                aria-label="Search for any IP address or domain">
+            <button type="submit" class="search-button btn rounded-start-0 mb-1 ms-0">
+                <img src="./images/icon-arrow.svg" alt="Search">
+            </button>
+        </form>
         <div id="rowData" class="IP-data bg-body d-flex justify-content-evenly w-75 mt-3 rounded p-4">
             <div class="IP-address border-end text-start w-25">
                 <p class="text-secondary">IP address</p>
@@ -49,4 +52,5 @@
     <script src="./js/leaflet.js"></script>
     <script src="./js/index.js"></script>
 </body>
+
 </html>

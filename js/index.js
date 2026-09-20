@@ -1,4 +1,3 @@
-
 //////////////////* Leaflet Code for mapping API ///////////////////////
 
 let map = L.map("map").setView([30.0444, 31.2357], 13);
@@ -7,19 +6,19 @@ let customIcon = L.icon({
   iconSize: [40, 50],
 });
 
-
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
 let marker = L.marker([30.0444, 31.2357], { icon: customIcon }).addTo(map);
 
 ////////////////////! inputs ///////////////////////////
 
 const ipTracker = document.getElementById("IP-tracker");
-const searchButton = document.getElementById("search-button");
 const rowData = document.getElementById("rowData");
+const ipForm = document.getElementById("ip-form");
 
 ////////////////////? functions ////////////////////////
 
-searchButton.addEventListener("click", () => {
+ipForm.addEventListener("submit", (e) => {
+  e.preventDefault();
   getData(ipTracker.value);
 });
 
@@ -39,17 +38,13 @@ async function getData(ip) {
 }
 getData(ipTracker.value);
 
-
 function displayInfo(data) {
-
-  let ip = data.ip ;
+  let ip = data.ip;
   let postalPart =
     data.location.postalCode !== "" ? " " + data.location.postalCode : "";
   let isp = data.isp;
   let timeZone = data.location.timezone;
   let location = data.location.city + " " + data.location.country + postalPart;
-  
-
 
   let cartoona = `<div class="IP-address border-end text-start w-25">
                 <p class="text-secondary">IP address</p>
@@ -71,7 +66,7 @@ function displayInfo(data) {
   rowData.innerHTML = cartoona;
 }
 
-function updateMap(lat , lng){
-   map.setView([lat , lng] , 13);
-   marker.setLatLng([lat , lng]);
+function updateMap(lat, lng) {
+  map.setView([lat, lng], 13);
+  marker.setLatLng([lat, lng]);
 }
