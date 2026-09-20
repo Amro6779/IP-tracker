@@ -39,31 +39,15 @@ async function getData(ip) {
 getData(ipTracker.value);
 
 function displayInfo(data) {
-  let ip = data.ip;
   let postalPart =
     data.location.postalCode !== "" ? " " + data.location.postalCode : "";
-  let isp = data.isp;
-  let timeZone = data.location.timezone;
   let location = data.location.city + " " + data.location.country + postalPart;
+  let timeZone = data.location.timezone;
 
-  let cartoona = `<div class="IP-address border-end text-start w-25">
-                <p class="text-secondary">IP address</p>
-                <p id="IP-address" class="fw-bolder fs-4 m-0">${ip}</p>
-            </div>
-            <div class="location border-end text-start w-25">
-                <p class="text-secondary">location</p>
-                <p id="location" class="fw-bolder fs-4 m-0">${location}</p>
-            </div>
-            <div class="time-zone border-end text-start w-25">
-                <p class="text-secondary">Time Zone</p>
-                <p id="Time-Zone" class="fw-bolder fs-4 m-0">UTC${timeZone}</p>
-            </div>
-            <div class="isp">
-                <p class="text-secondary text-start w-25">ISP</p>
-                <p id="isp" class="fw-bolder fs-4 m-0">${isp}</p>
-            </div>`;
-
-  rowData.innerHTML = cartoona;
+  document.getElementById("IP-address").textContent = data.ip;
+  document.getElementById("location").textContent = location;
+  document.getElementById("Time-Zone").textContent = `UTC${timeZone}`;
+  document.getElementById("isp").textContent = data.isp;
 }
 
 function updateMap(lat, lng) {
