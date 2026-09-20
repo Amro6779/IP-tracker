@@ -17,8 +17,9 @@ body {
 }
 
 .tracker {
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 600px !important;
+  margin: 0 auto !important;
+  text-align: center;
 }
 
 .IP-locker {
@@ -42,7 +43,7 @@ body {
   background-color: var(--gray400);
 }
 
-.IP-data {
+#rowData.IP-data {
   max-width: 1100px;
   margin: 40px auto 0;
   position: relative;
@@ -60,7 +61,7 @@ body {
   }
 
   .tracker {
-    max-width: 90%;
+    max-width: 90% !important;
     padding-inline: 15px;
   }
 
@@ -68,12 +69,12 @@ body {
     font-size: 1.25rem !important;
   }
 
-  .IP-data {
+  #rowData.IP-data {
     max-width: 100%;
-    flex-direction: column;
+    flex-direction: column !important;
   }
 
-  .IP-data > div {
+  #rowData.IP-data > div {
     border-right: none !important;
     border-bottom: 1px solid #e0e0e0;
     padding-bottom: 12px;
@@ -81,7 +82,7 @@ body {
     width: 100% !important;
   }
 
-  .IP-data > div:last-child {
+  #rowData.IP-data > div:last-child {
     border-bottom: none;
     margin-bottom: 0;
   }
