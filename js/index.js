@@ -23,17 +23,27 @@ ipForm.addEventListener("submit", (e) => {
 });
 
 async function getData(ip) {
+  const errorBox = document.getElementById("error-message");
+  errorBox.classList.add("d-none");
+  errorBox.textContent = "";
+
   try {
     let apiUrl = !ip ? `/api/get-ip-data` : `/api/get-ip-data?ip=${ip}`;
     let ipInfo = await fetch(apiUrl);
     let data = await ipInfo.json();
+
+    if (data.messages || !data.location) {
+      throw new Error("Invalid IP address or domain.");
+    }
+
     displayInfo(data);
 
     const lat = data.location.lat;
     const lng = data.location.lng;
     updateMap(lat, lng);
   } catch (error) {
-    console.log(error);
+    errorBox.textContent = "Something went wrong. Please check the IP address or domain and try again.";
+    errorBox.classList.remove("d-none");
   }
 }
 getData(ipTracker.value);
